@@ -3,60 +3,98 @@ package com.taokyone.aa_finalproject_android.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.taokyone.aa_finalproject_android.R
+import com.bumptech.glide.Glide
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
-import com.taokyone.aa_finalproject_android.model.CharacterInfo
-import com.taokyone.aa_finalproject_android.model.apiData.RetroFitAPI
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import com.taokyone.aa_finalproject_android.model.apiData.NasaImage
+import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
+import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotes
+import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotesAPI
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private val baseURL = "https://comicvine.gamespot.com/"
+    // BaseURLs
+    private val baseURLQuotes = "https://zenquotes.io/"
+    private val baseURLNasa = "https://api.nasa.gov/"
+
+    // ViewBinding
     lateinit var viewBinding: ActivityMainBinding
-    var characterInfoList = ArrayList<CharacterInfo>()
+
+    var wisdomList = ArrayList<WisdomQuotes>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = viewBinding.root
         setContentView(view)
-        showPosts()
+
+        // Running the API-calls
+        showQuotes()
+        showNasaImg()
     }
 
 
-    fun showPosts() {
+    private fun showNasaImg () {
         val retroFit = Retrofit.Builder().
-        baseUrl(baseURL).
+        baseUrl(baseURLNasa).
         addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val retrofitAPI : RetroFitAPI = retroFit.create(RetroFitAPI::class.java)
+        val nasaImgAPI = retroFit.create<NasaImageAPI>().getNasaImage()
 
-        val call : Call<List<CharacterInfo>> = retrofitAPI.getCharacterInfo()
+        nasaImgAPI.enqueue(object : Callback<NasaImage> {
+            override fun onResponse(call: Call<NasaImage>, response: Response<NasaImage>) {
 
-        // Callback function
-        call.enqueue(object : Callback<List<CharacterInfo>> {
-            override fun onResponse(call: Call<List<CharacterInfo>>, response: Response<List<CharacterInfo>>) {
+                val nasaImg = response.body()
 
-                if(!response.isSuccessful) {
-                    //viewBinding.imgCharacterId
-                    viewBinding.tvNameId.text = "Error - name couldn't be found"
-                    viewBinding.tvAliasesId.text = "Error - aliases couldn't be found"
-                    viewBinding.tvDeckId.text = "Error - breif cescription couln't be found"
+                if (!response.isSuccessful) {
+                    println("Error...the daily image from NASA couldn't be loaded")
                 }
 
-                characterInfoList = response.body() as ArrayList<CharacterInfo>
-                viewBinding.tvNameId.text = characterInfoList[0].name
-                viewBinding.tvNameId.text = characterInfoList[0].aliases
-                viewBinding.tvNameId.text = characterInfoList[0].deck
+                    if (nasaImg != null) {
+                        Glide.with(this@MainActivity)
+                            .load(nasaImg.hdurl).into(viewBinding.ivNasaIMG)
+                    }
+            }
+
+            override fun onFailure(call: Call<NasaImage>, t: Throwable) {
+                Toast.makeText(applicationContext,
+                    t.localizedMessage,
+                    Toast.LENGTH_LONG).show()
+            }
+
+        })
+
+
+    }
+
+    private fun showQuotes() {
+        val retroFit = Retrofit.Builder().
+        baseUrl(baseURLQuotes).
+        addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val quotesAPI : WisdomQuotesAPI = retroFit.create(WisdomQuotesAPI::class.java)
+
+        val call : Call<List<WisdomQuotes>> = quotesAPI.getWisdomQuote()
+
+        // Callback function
+        call.enqueue(object : Callback<List<WisdomQuotes>> {
+            override fun onResponse(call: Call<List<WisdomQuotes>>, response: Response<List<WisdomQuotes>>) {
+
+                if(!response.isSuccessful) {
+                    viewBinding.tvQuoteId.text = "Error - quote couldn't be found..."
+                    viewBinding.tvAuthorId.text = "Error - author couldn't be found..."
+                }
+
+                wisdomList = response.body() as ArrayList<WisdomQuotes>
+                viewBinding.tvQuoteId.text = wisdomList[0].q
+                viewBinding.tvAuthorId.text = wisdomList[0].a
 
             }
 
-            override fun onFailure(call: Call<List<CharacterInfo>>, t: Throwable) {
+            override fun onFailure(call: Call<List<WisdomQuotes>>, t: Throwable) {
                 Toast.makeText(applicationContext,
                     t.localizedMessage,
                     Toast.LENGTH_LONG).show()
