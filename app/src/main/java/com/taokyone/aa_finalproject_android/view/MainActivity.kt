@@ -30,10 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         // Running the API-calls
-        showQuotes()
+        showWisdomQuotes()
         showNasaImg()
     }
-
 
     private fun showNasaImg () {
         val retroFit = Retrofit.Builder().
@@ -53,8 +52,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                     if (nasaImg != null) {
-                        Glide.with(this@MainActivity)
-                            .load(nasaImg.hdurl).into(viewBinding.ivNasaIMG)
+                        Glide.with(viewBinding.root)
+                            .load(nasaImg.hdurl)
+                            .into(viewBinding.ivNasaIMG)
                     }
             }
 
@@ -65,11 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
-
     }
-
-    private fun showQuotes() {
+    private fun showWisdomQuotes() {
         val retroFit = Retrofit.Builder().
         baseUrl(baseURLQuotes).
         addConverterFactory(GsonConverterFactory.create())

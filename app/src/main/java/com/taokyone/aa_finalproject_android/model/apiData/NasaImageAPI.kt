@@ -7,4 +7,5 @@ interface NasaImageAPI {
 
     @GET("/planetary/apod?api_key=DEMO_KEY")
     fun getNasaImage () : Call<NasaImage>
+
 }
