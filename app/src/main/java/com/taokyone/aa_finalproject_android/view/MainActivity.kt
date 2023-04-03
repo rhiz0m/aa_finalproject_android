@@ -2,13 +2,17 @@ package com.taokyone.aa_finalproject_android.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImage
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
 import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotes
 import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotesAPI
+import io.github.florent37.shapeofview.shapes.CutCornerView
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -17,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     // BaseURLs
     private val baseURLQuotes = "https://zenquotes.io/"
     private val baseURLNasa = "https://api.nasa.gov/"
+    private lateinit var nasaClickableImg: ImageView
+    private lateinit var quotesClickable: CutCornerView
 
     // ViewBinding
     lateinit var viewBinding: ActivityMainBinding
@@ -29,12 +35,28 @@ class MainActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
 
-        // Running the API-calls
-        showWisdomQuotes()
-        showNasaImg()
+        // Buttons
+        nasaClickableImg = viewBinding.ivNasaIMG
+        quotesClickable = viewBinding.ccwQuotes
+
+        nasaClickableImg.setOnClickListener {
+            YoYo.with(Techniques.BounceInDown)
+                .duration(700)
+                .repeat(0)
+                .playOn(viewBinding.flNasaFrame);
+            getNasaImg()
+        }
+
+        quotesClickable.setOnClickListener {
+            YoYo.with(Techniques.BounceInUp)
+                .duration(700)
+                .repeat(0)
+                .playOn(viewBinding.flTextFrame);
+            getWisdomQuotes()
+        }
     }
 
-    private fun showNasaImg () {
+    private fun getNasaImg () {
         val retroFit = Retrofit.Builder().
         baseUrl(baseURLNasa).
         addConverterFactory(GsonConverterFactory.create())
@@ -66,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-    private fun showWisdomQuotes() {
+    private fun getWisdomQuotes() {
         val retroFit = Retrofit.Builder().
         baseUrl(baseURLQuotes).
         addConverterFactory(GsonConverterFactory.create())
@@ -99,4 +121,6 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+
+
 }

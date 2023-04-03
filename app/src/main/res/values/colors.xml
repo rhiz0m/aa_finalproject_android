@@ -10,5 +10,6 @@
 
     <!-- Custom Colors -->
     <color name="custom_dark">#1E1F23</color>
+    <color name="custom_dark_transparant">#801E1F23</color>
 
 </resources>
