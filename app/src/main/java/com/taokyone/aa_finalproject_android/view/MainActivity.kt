@@ -10,8 +10,8 @@ import com.daimajia.androidanimations.library.YoYo
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImage
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
-import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotes
-import com.taokyone.aa_finalproject_android.model.apiData.WisdomQuotesAPI
+import com.taokyone.aa_finalproject_android.model.apiData.Quotes
+import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
 import io.github.florent37.shapeofview.shapes.CutCornerView
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var quotesClickable: CutCornerView
 
     // ViewBinding
-    lateinit var viewBinding: ActivityMainBinding
+    private lateinit var viewBinding: ActivityMainBinding
 
-    var wisdomList = ArrayList<WisdomQuotes>()
+    var quotesList = ArrayList<Quotes>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,27 +35,31 @@ class MainActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
 
-        // Buttons
+    /*
+        // Buttons and Listeners
         nasaClickableImg = viewBinding.ivNasaIMG
         quotesClickable = viewBinding.ccwQuotes
 
         nasaClickableImg.setOnClickListener {
+            getNasaImg()
             YoYo.with(Techniques.BounceInDown)
                 .duration(700)
                 .repeat(0)
-                .playOn(viewBinding.flNasaFrame);
-            getNasaImg()
-        }
+                .playOn(viewBinding.flNasaFrame)
 
+
+        }
         quotesClickable.setOnClickListener {
+            getWisdomQuotes()
             YoYo.with(Techniques.BounceInUp)
                 .duration(700)
                 .repeat(0)
-                .playOn(viewBinding.flTextFrame);
-            getWisdomQuotes()
+                .playOn(viewBinding.flTextFrame)
+
         }
     }
 
+    // Fetch API Methods
     private fun getNasaImg () {
         val retroFit = Retrofit.Builder().
         baseUrl(baseURLNasa).
@@ -94,26 +98,26 @@ class MainActivity : AppCompatActivity() {
         addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val quotesAPI : WisdomQuotesAPI = retroFit.create(WisdomQuotesAPI::class.java)
+        val quotesAPI : QuotesAPI = retroFit.create(QuotesAPI::class.java)
 
-        val call : Call<List<WisdomQuotes>> = quotesAPI.getWisdomQuote()
+        val call : Call<List<Quotes>> = quotesAPI.getWisdomQuote()
 
         // Callback function
-        call.enqueue(object : Callback<List<WisdomQuotes>> {
-            override fun onResponse(call: Call<List<WisdomQuotes>>, response: Response<List<WisdomQuotes>>) {
+        call.enqueue(object : Callback<List<Quotes>> {
+            override fun onResponse(call: Call<List<Quotes>>, response: Response<List<Quotes>>) {
 
                 if(!response.isSuccessful) {
                     viewBinding.tvQuoteId.text = "Error - quote couldn't be found..."
                     viewBinding.tvAuthorId.text = "Error - author couldn't be found..."
                 }
 
-                wisdomList = response.body() as ArrayList<WisdomQuotes>
-                viewBinding.tvQuoteId.text = wisdomList[0].q
-                viewBinding.tvAuthorId.text = wisdomList[0].a
+                quotesList = response.body() as ArrayList<Quotes>
+                viewBinding.tvQuoteId.text = quotesList[0].q
+                viewBinding.tvAuthorId.text = quotesList[0].a
 
             }
 
-            override fun onFailure(call: Call<List<WisdomQuotes>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Quotes>>, t: Throwable) {
                 Toast.makeText(applicationContext,
                     t.localizedMessage,
                     Toast.LENGTH_LONG).show()
@@ -122,5 +126,6 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-
+*/
+    }
 }
