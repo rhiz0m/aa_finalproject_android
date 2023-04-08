@@ -1,12 +1,15 @@
-package com.taokyone.aa_finalproject_android.view
+package com.taokyone.aa_finalproject_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.commit
 import com.bumptech.glide.Glide
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.google.android.material.navigation.NavigationBarView
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImage
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
@@ -16,7 +19,7 @@ import io.github.florent37.shapeofview.shapes.CutCornerView
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     // BaseURLs
     private val baseURLQuotes = "https://zenquotes.io/"
@@ -35,7 +38,59 @@ class MainActivity : AppCompatActivity() {
         val view = viewBinding.root
         setContentView(view)
 
-    /*
+        // OnItemListener for the Bottom Navigation
+        viewBinding.bottomNavView.setOnItemSelectedListener(this)
+
+    }
+
+    private fun onHomeClicked () {
+        supportFragmentManager.commit {
+            replace(R.id.fcw_content, HomeFragment())
+        }
+    }
+    private fun onNotesClicked () {
+        supportFragmentManager.commit {
+            replace(R.id.fcw_content, NotesFragment())
+        }
+    }
+    private fun onExploreClicked () {
+        supportFragmentManager.commit {
+            replace(R.id.fcw_content, ExploreFragment())
+        }
+    }
+    private fun onAboutClicked () {
+        supportFragmentManager.commit {
+            replace(R.id.fcw_content, AboutFragment())
+        }
+    }
+
+    // Setting
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.nav_home -> {
+                onHomeClicked()
+                true
+            }
+            R.id.nav_notes -> {
+                onNotesClicked()
+                true
+            }
+            R.id.nav_explore -> {
+                onExploreClicked()
+                true
+            }
+            R.id.nav_about -> {
+                onAboutClicked()
+                true
+            }
+            else -> {
+                false
+            }
+        }
+    }
+}
+
+/*
         // Buttons and Listeners
         nasaClickableImg = viewBinding.ivNasaIMG
         quotesClickable = viewBinding.ccwQuotes
@@ -127,5 +182,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 */
-    }
-}
