@@ -45,22 +45,22 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun onHomeClicked () {
         supportFragmentManager.commit {
-            replace(R.id.fcw_content, HomeFragment())
+            replace(R.id.nav_host_fragment, HomeFragment())
         }
     }
     private fun onNotesClicked () {
         supportFragmentManager.commit {
-            replace(R.id.fcw_content, NotesFragment())
+            replace(R.id.nav_host_fragment, NotesFragment())
         }
     }
     private fun onExploreClicked () {
         supportFragmentManager.commit {
-            replace(R.id.fcw_content, ExploreFragment())
+            replace(R.id.nav_host_fragment, ExploreFragment())
         }
     }
     private fun onAboutClicked () {
         supportFragmentManager.commit {
-            replace(R.id.fcw_content, AboutFragment())
+            replace(R.id.nav_host_fragment, AboutFragment())
         }
     }
 

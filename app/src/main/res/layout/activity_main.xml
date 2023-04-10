@@ -25,14 +25,15 @@
 </FrameLayout>
 
 <androidx.fragment.app.FragmentContainerView
-    android:id="@+id/fcw_content"
-    android:name="com.taokyone.aa_finalproject_android.HomeFragment"
+    android:id="@+id/nav_host_fragment"
     android:layout_width="0dp"
     android:layout_height="0dp"
     app:layout_constraintTop_toBottomOf="@id/top_navView"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/bottom_navView">
+    app:layout_constraintBottom_toTopOf="@id/bottom_navView"
+    android:name="com.taokyone.aa_finalproject_android.HomeFragment"
+    tools:layout="@layout/fragment_home">
 
 </androidx.fragment.app.FragmentContainerView>
 
@@ -45,6 +46,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:menu="@menu/bottom_nav"
     />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
