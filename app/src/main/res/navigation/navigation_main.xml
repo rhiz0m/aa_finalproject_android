@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.taokyone.aa_finalproject_android.HomeFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.taokyone.aa_finalproject_android.ExploreFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.taokyone.aa_finalproject_android.NotesFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.taokyone.aa_finalproject_android.AboutFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" >
         <action

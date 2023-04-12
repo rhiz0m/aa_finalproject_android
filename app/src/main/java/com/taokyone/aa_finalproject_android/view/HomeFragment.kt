@@ -1,4 +1,4 @@
-package com.taokyone.aa_finalproject_android
+package com.taokyone.aa_finalproject_android.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,18 @@ import android.view.ViewGroup
 import com.taokyone.aa_finalproject_android.R
 
 
-class NotesFragment : Fragment() {
-
+class HomeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
 }
+
+
+
+
