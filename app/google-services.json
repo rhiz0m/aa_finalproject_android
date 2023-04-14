@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "618734192865",
+    "firebase_url": "https://andriodfinalproject2023-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "andriodfinalproject2023",
+    "storage_bucket": "andriodfinalproject2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618734192865:android:5480a9b30d735f40728fa0",
+        "android_client_info": {
+          "package_name": "com.taokyone.aa_finalproject_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618734192865-hrc7ig8onf4o87iobv0ftapmo16caa7o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taokyone.aa_finalproject_android",
+            "certificate_hash": "80c65c1718d6fc76321f8a8b9a4f5028d249132c"
+          }
+        },
+        {
+          "client_id": "618734192865-2hclgk2k67as2153efr74v94mu0go220.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHdxPps_8pJ1hw2yQObYcWy_sR7rPpllU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618734192865-2hclgk2k67as2153efr74v94mu0go220.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
