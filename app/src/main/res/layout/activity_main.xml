@@ -16,7 +16,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     android:orientation="vertical"
     >
-
+<!--
     <EditText
         android:id="@+id/tv_enterData"
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         android:hint="Enter your user name"
         android:inputType="textPersonName"
         android:textSize="24dp" />
-
+-->
     <Button
         android:id="@+id/btn_top"
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:text="Add data to FBasE
 " />
-
+<!--
     <TextView
         android:id="@+id/tv_incomingData"
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_gravity="center"
         android:textSize="24dp"
         android:hint="Incoming data" />
-
+-->
 </LinearLayout>
 
 <androidx.fragment.app.FragmentContainerView

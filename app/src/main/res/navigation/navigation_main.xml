@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_notesFragment2"
             app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
@@ -36,6 +39,9 @@
         <action
             android:id="@+id/action_notesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -46,4 +52,27 @@
             android:id="@+id/action_aboutFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_addNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.EditNoteFragment"
+        android:label="fragment_edit_note"
+        tools:layout="@layout/fragment_edit_note" />
 </navigation>

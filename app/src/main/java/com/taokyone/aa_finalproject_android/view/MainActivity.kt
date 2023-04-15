@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         // OnItemListener for the Bottom Navigation
         viewBinding.bottomNavView.setOnItemSelectedListener(this)
 
+        // Firebase DB Test
+        /*
         sendDataBtn = viewBinding.btnTop
         enterData = viewBinding.tvEnterData
         receiveData = viewBinding.tvIncomingData
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         sendDataBtn.setOnClickListener() {
             val userName = enterData.text.toString()
             referenceToSend.child("name").setValue(userName)
-        }
+        } */
 
     }
 
