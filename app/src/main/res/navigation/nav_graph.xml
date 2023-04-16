@@ -39,9 +39,6 @@
         <action
             android:id="@+id/action_notesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_notesFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -65,11 +62,7 @@
         android:id="@+id/addNoteFragment"
         android:name="com.taokyone.aa_finalproject_android.view.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" >
-        <action
-            android:id="@+id/action_addNoteFragment_to_notesFragment"
-            app:destination="@id/notesFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_add_note" />
     <fragment
         android:id="@+id/editNoteFragment"
         android:name="com.taokyone.aa_finalproject_android.view.EditNoteFragment"

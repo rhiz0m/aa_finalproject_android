@@ -1,27 +1,24 @@
-package com.taokyone.aa_finalproject_android.view
+package com.taokyone.aa_finalproject_android.viewModel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import androidx.fragment.app.commit
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.navigation.NavigationBarView
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
-import com.taokyone.aa_finalproject_android.viewModel.HomeViewModel
+import com.taokyone.aa_finalproject_android.view.*
 import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
-    private val homeViewModel : HomeViewModel by viewModels()
+    private val dateTimeViewModel : DateTimeViewModel by viewModels()
     // Create an object from Firebase reference class
     /*
     private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -52,16 +49,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                homeViewModel.uiState.collect() {
+                dateTimeViewModel.uiState.collect() {
                     //Update UI elements
-                    viewBinding.tvDate.text = homeViewModel.uiState.value.toString()
+                    viewBinding.tvDate.text = dateTimeViewModel.uiState.value.toString()
 
                 }
             }
         }
 
         showDateBtn.setOnClickListener() {
-            homeViewModel.add()
+            dateTimeViewModel.add()
         }
 
 
@@ -106,7 +103,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
     private fun onExploreClicked () {
         supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment, ExploreFragment())
+            replace(R.id.nav_host_fragment, AddNoteFragment())
         }
     }
     private fun onAboutClicked () {

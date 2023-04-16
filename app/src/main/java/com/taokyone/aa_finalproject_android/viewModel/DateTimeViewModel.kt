@@ -10,7 +10,7 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 
-class HomeViewModel: ViewModel() {
+class DateTimeViewModel: ViewModel() {
 
     //Setup mutableSTateFlow
     private val _uiState = MutableStateFlow(Date(LocalDate.now(), LocalTime.now()))

@@ -6,7 +6,5 @@ data class Quotes(
     var q: String = "",
     var a: String = "",
 ) {
-    override fun toString(): String {
-        return "Quotes(q='$q', a='$a')"
-    }
+
 }

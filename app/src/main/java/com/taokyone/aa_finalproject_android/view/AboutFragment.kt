@@ -72,7 +72,6 @@ class AboutFragment : Fragment() {
         }
 
 
-
         // Fetch API Methods
         fun getNasaImg () {
 
