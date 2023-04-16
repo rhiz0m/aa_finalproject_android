@@ -1,5 +1,6 @@
 package com.taokyone.aa_finalproject_android.model.apiData
 
+import com.taokyone.aa_finalproject_android.model.NasaImage
 import retrofit2.Call
 import retrofit2.http.GET
 

@@ -4,18 +4,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.fragment.app.commit
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.navigation.NavigationBarView
-import com.google.firebase.database.*
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
+import com.taokyone.aa_finalproject_android.viewModel.HomeViewModel
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
+    private val homeViewModel : HomeViewModel by viewModels()
     // Create an object from Firebase reference class
+    /*
     private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
     private val referenceToSend : DatabaseReference = dataBase.reference.child("Users")
     private val referenceToGet : DatabaseReference = dataBase.reference
@@ -24,6 +32,10 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     lateinit var sendDataBtn: Button
     private lateinit var enterData: EditText
     private lateinit var receiveData: TextView
+*/
+
+
+    lateinit var showDateBtn: Button
 
     // ViewBinding
     private lateinit var viewBinding: ActivityMainBinding
@@ -34,6 +46,25 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = viewBinding.root
         setContentView(view)
+
+        showDateBtn = viewBinding.btnTop
+
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                homeViewModel.uiState.collect() {
+                    //Update UI elements
+                    viewBinding.tvDate.text = homeViewModel.uiState.value.toString()
+
+                }
+            }
+        }
+
+        showDateBtn.setOnClickListener() {
+            homeViewModel.add()
+        }
+
+
 
         // OnItemListener for the Bottom Navigation
         viewBinding.bottomNavView.setOnItemSelectedListener(this)
@@ -60,7 +91,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             val userName = enterData.text.toString()
             referenceToSend.child("name").setValue(userName)
         } */
-
     }
 
     // Fragment section

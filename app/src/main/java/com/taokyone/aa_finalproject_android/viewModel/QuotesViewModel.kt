@@ -1,7 +1,7 @@
 package com.taokyone.aa_finalproject_android.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.taokyone.aa_finalproject_android.model.apiData.Quotes
+import com.taokyone.aa_finalproject_android.model.Quotes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

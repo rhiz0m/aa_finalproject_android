@@ -32,17 +32,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Add data to FBasE
-" />
-<!--
+        android:text="State" />
+
     <TextView
-        android:id="@+id/tv_incomingData"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="24dp"
-        android:hint="Incoming data" />
--->
+        android:textSize="16dp"
+        android:hint="Date" />
+
 </LinearLayout>
 
 <androidx.fragment.app.FragmentContainerView

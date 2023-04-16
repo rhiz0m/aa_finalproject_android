@@ -17,9 +17,9 @@ import com.bumptech.glide.Glide
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.taokyone.aa_finalproject_android.databinding.FragmentAboutBinding
-import com.taokyone.aa_finalproject_android.model.apiData.NasaImage
+import com.taokyone.aa_finalproject_android.model.NasaImage
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
-import com.taokyone.aa_finalproject_android.model.apiData.Quotes
+import com.taokyone.aa_finalproject_android.model.Quotes
 import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
 import com.taokyone.aa_finalproject_android.viewModel.NasaViewModel
 import com.taokyone.aa_finalproject_android.viewModel.QuotesViewModel
