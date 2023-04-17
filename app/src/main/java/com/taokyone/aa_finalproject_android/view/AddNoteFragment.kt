@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.taokyone.aa_finalproject_android.databinding.FragmentAddNoteBinding
@@ -60,6 +61,9 @@ class AddNoteFragment : Fragment() {
                     if (response.isSuccessful) {
                         addNotesBinding.tvQuotes.text = "$nasaImgUrl"
                     }
+                    else {
+                        addNotesBinding.tvQuotes.text = "Couldn't get the Url"
+                    }
                 }
 
                 override fun onFailure(call: retrofit2.Call<NasaImage>, t: Throwable) {
@@ -84,10 +88,9 @@ class AddNoteFragment : Fragment() {
 
 
         //Creating a unique key for each note
-
         val uniqueId : String = myReference.push().key.toString()
         //Notes-object to Firebase
-        val notesObj = UsersNotes(quotes,title, date, reflection)
+        val notesObj = UsersNotes(uniqueId, quotes,title, date, reflection)
 
         myReference.child(uniqueId).setValue(notesObj).addOnCompleteListener() {task ->
 

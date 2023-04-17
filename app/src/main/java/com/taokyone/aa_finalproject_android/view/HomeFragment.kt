@@ -52,6 +52,8 @@ class HomeFragment : Fragment() {
 
                     if (response.isSuccessful) {
                         homeBinding.tvHome.text = "testing Url + ${nasaImgUrl}"
+                    } else {
+                        homeBinding.tvHome.text = "Couldn't get the Url"
                     }
                 }
 

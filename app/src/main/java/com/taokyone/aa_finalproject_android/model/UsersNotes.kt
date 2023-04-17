@@ -1,7 +1,7 @@
 package com.taokyone.aa_finalproject_android.model
 
 data class UsersNotes(
-    //val usersNotesId: String = "",
+    val uniqueId: String = "",
     //val nasaImg: String = "",
     val quotes: String = "",
     val title: String = "",
