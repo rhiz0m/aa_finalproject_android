@@ -1,50 +1,44 @@
 package com.taokyone.aa_finalproject_android.view
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 import com.taokyone.aa_finalproject_android.R
-import com.taokyone.aa_finalproject_android.databinding.FragmentNotesBinding
+import com.taokyone.aa_finalproject_android.databinding.ActivityListBinding
 import com.taokyone.aa_finalproject_android.model.NotesAdapter
-import com.taokyone.aa_finalproject_android.model.UsersNotes
+import com.taokyone.aa_finalproject_android.model.UserNotes
 
+class ListActivity : AppCompatActivity() {
 
-class NotesFragment : Fragment() {
-
-    private lateinit var notesBinding: FragmentNotesBinding
+    private lateinit var listBinding: ActivityListBinding
 
     private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
     private val referenceToGet : DatabaseReference = dataBase.reference.child("UsersNotes")
 
-    val notesList = ArrayList<UsersNotes>()
-    lateinit var notesAdapter : NotesAdapter
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private lateinit var notesAdapter : NotesAdapter
+    private val notesList = ArrayList<UserNotes>()
 
-        // Inflate the layout for this fragment
-        notesBinding = FragmentNotesBinding.inflate(layoutInflater, container, false)
-        val view = notesBinding.root
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_list)
+
+         listBinding = ActivityListBinding.inflate(layoutInflater)
+        val view = listBinding.root
+        setContentView(view)
 
         getDataFromFireBase()
-        return view
-    }
 
+    }
     private fun getDataFromFireBase() {
-        referenceToGet.addValueEventListener(object : ValueEventListener{
+        referenceToGet.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 notesList.clear()
 
                 for (eachNote in snapshot.children) {
-                   val notes = eachNote.getValue(UsersNotes::class.java)
+                    val notes = eachNote.getValue(UserNotes::class.java)
 
                     if (notes != null) {
                         notesList.add(notes)
@@ -57,14 +51,12 @@ class NotesFragment : Fragment() {
                         println("Users reflection: ${notes.reflection}")
                         println("*************************************")*/
 
-
                     } else {
                         println("An error occurred...")
                     }
-
-                    notesAdapter = NotesAdapter(this@NotesFragment, notesList)
-                    notesBinding.rvNotesList.layoutManager = LinearLayoutManager(context)
-                    notesBinding.rvNotesList.adapter = notesAdapter
+                    notesAdapter = NotesAdapter(this@ListActivity, notesList)
+                    listBinding.rvNotesList.layoutManager = LinearLayoutManager(this@ListActivity)
+                    listBinding.rvNotesList.adapter = notesAdapter
                 }
             }
 
@@ -74,5 +66,4 @@ class NotesFragment : Fragment() {
 
         })
     }
-
 }

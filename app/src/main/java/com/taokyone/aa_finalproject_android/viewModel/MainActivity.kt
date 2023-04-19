@@ -1,38 +1,24 @@
 package com.taokyone.aa_finalproject_android.viewModel
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.fragment.app.commit
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.navigation.NavigationBarView
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 import com.taokyone.aa_finalproject_android.view.*
-import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private val dateTimeViewModel : DateTimeViewModel by viewModels()
-    // Create an object from Firebase reference class
-    /*
-    private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val referenceToSend : DatabaseReference = dataBase.reference.child("Users")
-    private val referenceToGet : DatabaseReference = dataBase.reference
 
-    // Variables
-    lateinit var sendDataBtn: Button
-    private lateinit var enterData: EditText
-    private lateinit var receiveData: TextView
-*/
-
-
-    lateinit var showDateBtn: Button
+    private lateinit var showDateBtn: Button
+    private lateinit var addNotes: Button
 
     // ViewBinding
     private lateinit var viewBinding: ActivityMainBinding
@@ -44,9 +30,16 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         val view = viewBinding.root
         setContentView(view)
 
-        showDateBtn = viewBinding.btnTop
+        addNotes = viewBinding.btnAdd
+        var intentAddNote = Intent(this, AddNoteActivity::class.java)
+
+        addNotes.setOnClickListener() {
+            startActivity(intentAddNote)
+
+        }
 
 
+        /*
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 dateTimeViewModel.uiState.collect() {
@@ -59,58 +52,36 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         showDateBtn.setOnClickListener() {
             dateTimeViewModel.add()
-        }
 
-
+        } */
 
         // OnItemListener for the Bottom Navigation
         viewBinding.bottomNavView.setOnItemSelectedListener(this)
-
-        // Firebase DB Test
-        /*
-        sendDataBtn = viewBinding.btnTop
-        enterData = viewBinding.tvEnterData
-        receiveData = viewBinding.tvIncomingData
-
-        referenceToGet.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-               val getName : String = snapshot.child("Users").child("name").value as String
-                receiveData.text = getName
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })
-
-        // Send data to Firebase DB
-        sendDataBtn.setOnClickListener() {
-            val userName = enterData.text.toString()
-            referenceToSend.child("name").setValue(userName)
-        } */
     }
 
-    // Fragment section
+    // Fragment Bottom section
     private fun onHomeClicked () {
         supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment, HomeFragment())
+            replace(R.id.fragmentContainerView, HomeFragment())
         }
     }
-    private fun onNotesClicked () {
+     private fun onNotesClicked () {
+         var intentRecycler = Intent(this, ListActivity::class.java)
+         startActivity(intentRecycler)
+    }
+
+    private fun onNasaClicked () {
         supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment, NotesFragment())
+            replace(R.id.fragmentContainerView, NasaFragment())
         }
     }
-    private fun onExploreClicked () {
-        supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment, AddNoteFragment())
-        }
+
+     private fun onAboutClicked () {
+         supportFragmentManager.commit {
+             replace(R.id.fragmentContainerView, AboutFragment())
+         }
     }
-    private fun onAboutClicked () {
-        supportFragmentManager.commit {
-            replace(R.id.nav_host_fragment, AboutFragment())
-        }
-    }
+
 
     // Setting
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -123,10 +94,11 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 onNotesClicked()
                 true
             }
-            R.id.nav_explore -> {
-                onExploreClicked()
+            R.id.nav_nasa -> {
+                onNasaClicked()
                 true
             }
+
             R.id.nav_about -> {
                 onAboutClicked()
                 true

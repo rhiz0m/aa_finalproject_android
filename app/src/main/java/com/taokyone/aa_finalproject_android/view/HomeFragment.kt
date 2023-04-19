@@ -2,17 +2,21 @@ package com.taokyone.aa_finalproject_android.view
 
 import android.os.Bundle
 import android.telecom.Call
+import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.commit
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.FragmentHomeBinding
 import com.taokyone.aa_finalproject_android.model.NasaImage
 import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
@@ -26,7 +30,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var homeBinding: FragmentHomeBinding
     private val baseURLNasa = "https://api.nasa.gov/"
-
+    lateinit var myButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +39,8 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         homeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         val view = homeBinding.root
+
+        //myButton = homeBinding.btnGoEdit
 
         fun getNasaUrl () {
 
@@ -51,9 +57,9 @@ class HomeFragment : Fragment() {
                     val nasaImgUrl = response.body()
 
                     if (response.isSuccessful) {
-                        homeBinding.tvHome.text = "testing Url + ${nasaImgUrl}"
+                        //homeBinding.tvHome.text = "testing Url + ${nasaImgUrl}"
                     } else {
-                        homeBinding.tvHome.text = "Couldn't get the Url"
+                        //homeBinding.tvHome.text = "Couldn't get the Nasa Image"
                     }
                 }
 
@@ -67,12 +73,8 @@ class HomeFragment : Fragment() {
         }
 
         getNasaUrl()
-
-
         return view
     }
-
-
 }
 
 

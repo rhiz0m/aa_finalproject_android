@@ -2,70 +2,31 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_main"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.taokyone.aa_finalproject_android.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_exploreFragment"
-            app:destination="@id/exploreFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_notesFragment2"
-            app:destination="@id/notesFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/exploreFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.ExploreFragment"
-        android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" >
-        <action
-            android:id="@+id/action_exploreFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/notesFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.NotesFragment"
-        android:label="fragment_notes"
-        tools:layout="@layout/fragment_notes" >
-        <action
-            android:id="@+id/action_notesFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.taokyone.aa_finalproject_android.view.AboutFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" >
-        <action
-            android:id="@+id/action_aboutFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.AddNoteFragment"
-        android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
-    <fragment
-        android:id="@+id/editNoteFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.EditNoteFragment"
-        android:label="fragment_edit_note"
-        tools:layout="@layout/fragment_edit_note" />
+        tools:layout="@layout/fragment_about" />
+    <activity
+        android:id="@+id/editActivity"
+        android:name="com.taokyone.aa_finalproject_android.view.EditActivity"
+        android:label="activity_edit"
+        tools:layout="@layout/activity_edit" />
+    <activity
+        android:id="@+id/listActivity"
+        android:name="com.taokyone.aa_finalproject_android.view.ListActivity"
+        android:label="activity_list"
+        tools:layout="@layout/activity_list" />
+    <activity
+        android:id="@+id/addNoteActivity"
+        android:name="com.taokyone.aa_finalproject_android.view.AddNoteActivity"
+        android:label="activity_add_note"
+        tools:layout="@layout/activity_add_note" />
 </navigation>

@@ -6,19 +6,19 @@
         android:icon="@drawable/home_24"
         />
     <item
+        android:id="@+id/nav_nasa"
+        android:title="Nasa Daily"
+        android:icon="@drawable/rocket_24"
+        />
+    <item
         android:id="@+id/nav_notes"
         android:title="Notes"
         android:icon="@drawable/notes_24"
         />
-    <item
-        android:id="@+id/nav_explore"
-        android:title="Explore"
-        android:icon="@drawable/rocket_24"
-        />
+
     <item
         android:id="@+id/nav_about"
         android:title="About"
         android:icon="@drawable/about_24"
         />
-
 </menu>

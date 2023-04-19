@@ -2,19 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/explore_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ExploreFragment">
+    android:background="#432E302D"
+    tools:context=".view.ListActivity">
 
-    <TextView
-        android:id="@+id/tv_explore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is the EXPLORE fragment"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notes_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
+        tools:listitem="@layout/list_item"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
