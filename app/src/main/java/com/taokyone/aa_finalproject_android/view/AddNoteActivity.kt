@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityAddNoteBinding
-import com.taokyone.aa_finalproject_android.model.NasaImage
+import com.taokyone.aa_finalproject_android.model.Nasa
 import com.taokyone.aa_finalproject_android.model.UserNotes
-import com.taokyone.aa_finalproject_android.model.apiData.NasaImageAPI
+import com.taokyone.aa_finalproject_android.model.apiData.NasaAPI
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -49,56 +50,58 @@ class AddNoteActivity : AppCompatActivity() {
             addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            val nasaImgAPI = retroFit.create<NasaImageAPI>().getNasaImage()
+            val nasaImgAPI = retroFit.create<NasaAPI>().getNasaImage()
 
-            nasaImgAPI.enqueue(object : Callback<NasaImage> {
-                override fun onResponse(call: retrofit2.Call<NasaImage>, response: Response<NasaImage>) {
+            nasaImgAPI.enqueue(object : Callback<Nasa> {
+                override fun onResponse(call: retrofit2.Call<Nasa>, response: Response<Nasa>) {
 
                     val nasaImgUrl = response.body()
 
                     if (response.isSuccessful) {
-                        addNotesBinding.tvQuotes.text = "$nasaImgUrl"
+                        addNotesBinding.tvApiInfo.text = "$nasaImgUrl"
 
                     }
                     else {
-                        addNotesBinding.tvQuotes.text = "Couldn't get the Nasa Image"
+                        addNotesBinding.tvApiInfo.text = "Couldn't get the Nasa Image"
                     }
                 }
 
-                override fun onFailure(call: retrofit2.Call<NasaImage>, t: Throwable) {
+                override fun onFailure(call: retrofit2.Call<Nasa>, t: Throwable) {
                     Toast.makeText(this@AddNoteActivity,
                         t.localizedMessage,
                         Toast.LENGTH_LONG).show()
                 }
-
             })
         }
 
-        addNotesBinding.tvQuotes.text = getNasaUrl().toString()
+        addNotesBinding.tvApiInfo.text = getNasaUrl().toString()
+
+           /* Glide.with(addNotesBinding.root)
+            .load(Nasa().url)
+            .into(addNotesBinding.ivNasa) */
     }
 
     private fun addNoteEntity() {
-        val quotes: String = addNotesBinding.tvQuotes.text.toString()
+
         val title : String = addNotesBinding.etTitle.text.toString()
         val date: Int = addNotesBinding.etDate.text.toString().toInt()
-        val reflection : String = addNotesBinding.etMultiDescription.text.toString()
+        val reflections : String = addNotesBinding.etReflections.text.toString()
+        val nasaData: String = addNotesBinding.tvApiInfo.text.toString()
 
         //Creating a unique key for each note
         val uniqueId : String = myReference.push().key.toString()
         //Notes-object to Firebase
-        val notesObj = UserNotes(uniqueId, quotes,title, date, reflection)
+        val notesObj = UserNotes(uniqueId,title, date, reflections, nasaData)
 
         myReference.child(uniqueId).setValue(notesObj).addOnCompleteListener() {task ->
 
             if (task.isSuccessful) {
-                Toast.makeText(this, "The Notes got Added to Firebase!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "The Notes got added to Firebase!", Toast.LENGTH_SHORT).show()
                 finish()
 
             } else {
                 Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
             }
-
         }
-
     }
 }

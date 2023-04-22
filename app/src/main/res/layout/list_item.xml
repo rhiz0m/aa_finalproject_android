@@ -17,29 +17,35 @@
         app:srcCompat="@drawable/galcen" />
 
     <TextView
-        android:id="@+id/tv_quotes"
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:text="quotes" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="title" />
 
     <TextView
         android:id="@+id/tv_date_Item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/tv_reflections"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tv_api_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="Nasa Api Info" />
 
 </LinearLayout>

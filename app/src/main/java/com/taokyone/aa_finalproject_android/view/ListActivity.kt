@@ -2,7 +2,10 @@ package com.taokyone.aa_finalproject_android.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityListBinding
@@ -14,7 +17,7 @@ class ListActivity : AppCompatActivity() {
     private lateinit var listBinding: ActivityListBinding
 
     private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val referenceToGet : DatabaseReference = dataBase.reference.child("UsersNotes")
+    private val myReference : DatabaseReference = dataBase.reference.child("UsersNotes")
 
     private lateinit var notesAdapter : NotesAdapter
     private val notesList = ArrayList<UserNotes>()
@@ -28,11 +31,34 @@ class ListActivity : AppCompatActivity() {
         val view = listBinding.root
         setContentView(view)
 
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+
+              val uniqueId =   notesAdapter.getUniqueId(viewHolder.adapterPosition)
+                    myReference.child(uniqueId).removeValue()
+                    Toast.makeText(applicationContext, "The Note got deleted!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
+        }).attachToRecyclerView(listBinding.rvNotesList)
+
         getDataFromFireBase()
 
     }
+
+    // Delete notes
+
     private fun getDataFromFireBase() {
-        referenceToGet.addValueEventListener(object : ValueEventListener {
+        myReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 notesList.clear()
