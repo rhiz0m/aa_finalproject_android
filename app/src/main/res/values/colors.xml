@@ -20,6 +20,12 @@
     <color name="darkgreen">#877575</color>
     <color name="lightgreen">#E2FF91</color>
     <color name="orange">#F4B17D</color>
-    <color name="lightyellow">#FDF1DF</color>
+    <color name="lightyellow">#FFE9CC</color>
+    <color name="lightPink">#FFE0CC</color>
+    <color name="mediumblue">#3FB0D5</color>
+    <color name="darkblue">#4E5663</color>
+    <color name="lightBlue">#A8C2EA</color>
+    <color name="lightBrown">#CAA492</color>
+
 
 </resources>

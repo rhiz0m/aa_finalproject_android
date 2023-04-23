@@ -1,6 +1,8 @@
 package com.taokyone.aa_finalproject_android.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,8 @@ import com.taokyone.aa_finalproject_android.databinding.FragmentHomeBinding
 import com.taokyone.aa_finalproject_android.model.Quotes
 import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
 import com.taokyone.aa_finalproject_android.viewModel.DateTimeViewModel
+import com.taokyone.aa_finalproject_android.viewModel.QuotesViewModel
+import io.github.florent37.shapeofview.shapes.BubbleView
 import io.github.florent37.shapeofview.shapes.CutCornerView
 import kotlinx.coroutines.launch
 import retrofit2.Callback
@@ -29,13 +33,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class HomeFragment : Fragment() {
 
     private lateinit var homeBinding: FragmentHomeBinding
+
     private val dateTimeViewModel : DateTimeViewModel by viewModels()
 
     private val baseURLQuotes = "https://zenquotes.io/"
 
-    private lateinit var quotesClickable: CutCornerView
+    private lateinit var quotesClickable: BubbleView
     private lateinit var floatingBtn : FloatingActionButton
-    private lateinit var showQuotesBtn : TextView
     var quotesList = ArrayList<Quotes>()
 
     override fun onCreateView(
@@ -46,16 +50,6 @@ class HomeFragment : Fragment() {
         homeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         val view = homeBinding.root
 
-        // Lifecycle
-       lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                dateTimeViewModel.uiState.collect() {
-                    //Update UI elements
-                   // homeBinding.tvState.text = dateTimeViewModel.uiState.value.toString()
-                }
-            }
-        }
-        DateTimeViewModel().add()
         // Buttons
 
         floatingBtn = homeBinding.floatingActionButton
@@ -69,11 +63,35 @@ class HomeFragment : Fragment() {
 
         }
 
-        // Click listeners
+        val clockView = homeBinding.tvClock
 
+        // Clock State handler
+        fun clockHandler () {
+            val handler = Handler(Looper.getMainLooper())
+            handler.postDelayed(object : Runnable {
+                override fun run() {
+                    dateTimeViewModel.add()
+                    handler.postDelayed(this, 1000)//1 sec delay
+                }
+            }, 0)
+        }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                dateTimeViewModel.uiState.collect() {
+                    //Update UI elements
+                    homeBinding.tvClock.text = "Time: " + dateTimeViewModel.uiState.value.time.toString()
+                    //homeBinding.tvLocalDate.text = "Date:" + dateTimeViewModel.uiState.value.date.toString()
+                }
+            }
+        }
+
+        // Click listeners
         quotesClickable.setOnClickListener {
             getWisdomQuotes()
         }
+        clockHandler()
+        YoYo.with(Techniques.FadeInLeft).duration(6000).repeat(100).playOn(clockView)
         return view
     }
 

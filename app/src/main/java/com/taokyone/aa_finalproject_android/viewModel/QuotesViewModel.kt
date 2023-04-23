@@ -9,17 +9,16 @@ import kotlinx.coroutines.flow.update
 
 class QuotesViewModel : ViewModel() {
 
-    //Setup mutableSTateFlow
+    // Setup mutableSTateFlow
     private  val _uiState = MutableStateFlow(Quotes())
     val uiState: StateFlow<Quotes> = _uiState.asStateFlow()
 
-    fun quotesState() {
+    fun quotesStateAdd() {
 
         _uiState.update { state ->
             state.copy(
                 q = state.q,
                 a = state.a
-
                 )
         }
     }
