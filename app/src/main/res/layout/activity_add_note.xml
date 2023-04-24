@@ -18,7 +18,14 @@
             android:layout_height="match_parent"
             android:background="#FFF3C8"
             android:orientation="vertical">
-    <ImageView
+
+            <TextView
+                android:id="@+id/tv_date_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="todays date" />
+
+            <ImageView
         android:id="@+id/iv_nasa"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -34,19 +41,19 @@
         android:layout_margin="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="title:"
+        android:hint="Title:"
         android:inputType="text"
         android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/et_date"
+        android:id="@+id/et_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="date:"
+        android:hint="category:"
         android:inputType="text"
         android:minHeight="48dp" />
 
@@ -70,14 +77,6 @@
         android:layout_margin="8dp"
         android:text="Add note" />
 
-    <TextView
-        android:id="@+id/tv_api_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:gravity="center"
-        android:text="tv_api_info" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>

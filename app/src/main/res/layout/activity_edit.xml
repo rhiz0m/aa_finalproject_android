@@ -20,7 +20,7 @@
             android:background="#FFF3C8"
             android:orientation="vertical">
 
-    <ImageView
+            <ImageView
         android:id="@+id/iv_nasa"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -28,7 +28,13 @@
         android:layout_margin="8dp"
         app:srcCompat="@drawable/galcen" />
 
-    <EditText
+            <TextView
+                android:id="@+id/tv_date_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,19 +42,19 @@
         android:layout_margin="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="title:"
+        android:hint="Title:"
         android:inputType="text"
         android:minHeight="48dp" />
 
     <EditText
-        android:id="@+id/et_date"
+        android:id="@+id/et_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="date:"
+        android:hint="Category:"
         android:inputType="text"
         android:minHeight="48dp" />
 
@@ -71,14 +77,7 @@
         android:layout_gravity="center"
         android:layout_margin="8dp"
         android:text="Update note" />
-            <TextView
-                android:id="@+id/tv_api_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:gravity="center"
-                android:text="tv_api_info" />
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>

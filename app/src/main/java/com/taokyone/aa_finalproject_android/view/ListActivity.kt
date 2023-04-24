@@ -41,14 +41,11 @@ class ListActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-
-              val uniqueId = notesAdapter.getUniqueId(viewHolder.adapterPosition)
+                val uniqueId = notesAdapter.getUniqueId(viewHolder.adapterPosition)
                 reference.child(uniqueId).removeValue()
                 Toast.makeText(applicationContext, "The Note got deleted!", Toast.LENGTH_SHORT).show()
                 finish()
             }
-
         }).attachToRecyclerView(listBinding.rvNotesList)
 
         getDataFromFireBase()

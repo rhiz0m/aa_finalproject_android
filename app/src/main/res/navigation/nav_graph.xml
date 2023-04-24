@@ -29,4 +29,9 @@
         android:name="com.taokyone.aa_finalproject_android.view.AddNoteActivity"
         android:label="activity_add_note"
         tools:layout="@layout/activity_add_note" />
+    <fragment
+        android:id="@+id/nasaFragment"
+        android:name="com.taokyone.aa_finalproject_android.view.NasaFragment"
+        android:label="fragment_nasa"
+        tools:layout="@layout/fragment_nasa" />
 </navigation>

@@ -41,36 +41,37 @@ class EditActivity : AppCompatActivity() {
 
     private fun getAndEditData() {
         // Get the data from NotesAdapter
+        val date = intent.getStringExtra("date")
         val title = intent.getStringExtra("title")
-        val date = intent.getIntExtra("date", 0).toString()
+        val category = intent.getStringExtra("category")
         val reflections = intent.getStringExtra("reflections")
-        val nasaData = intent.getStringExtra("nasaData")
+
 
         // Set the data
+        editBinding.tvDateAdd.text = date
         editBinding.etTitle.setText(title)
-        editBinding.etDate.setText(date)
+        editBinding.etCategory.setText(category)
         editBinding.etReflections.setText(reflections)
-        editBinding.tvApiInfo.text = nasaData
-
-
     }
 
     private fun updateData () {
-        val titleUpdated = editBinding.etTitle.text.toString()
-        val dateUpdated = editBinding.etDate.text.toString().toInt()
-        val reflectionsUpdated = editBinding.etReflections.text.toString()
-        val nasaDataUpdated = editBinding.tvApiInfo.text.toString()
 
         // Getting the Id from NotesAdapter
         val uniqueId = intent.getStringExtra("uniqueId").toString()
 
+        val dateUpdated = editBinding.tvDateAdd.text.toString()
+        val titleUpdated = editBinding.etTitle.text.toString()
+        val categoryUpdated = editBinding.etCategory.text.toString()
+        val reflectionsUpdated = editBinding.etReflections.text.toString()
+
         // Map from Firebase to get the key/value pair. Any = either String or INt
         val notesMap = mutableMapOf<String, Any>()
         notesMap["uniqueId"] = uniqueId
-        notesMap["title"] = titleUpdated
         notesMap["date"] = dateUpdated
+        notesMap["title"] = titleUpdated
+        notesMap["category"] = categoryUpdated
         notesMap["reflections"] = reflectionsUpdated
-        notesMap["nasaData"] = nasaDataUpdated
+
 
         myReference.child(uniqueId).updateChildren(notesMap).addOnCompleteListener() {task ->
             
