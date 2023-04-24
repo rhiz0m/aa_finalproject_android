@@ -17,7 +17,7 @@ class ListActivity : AppCompatActivity() {
     private lateinit var listBinding: ActivityListBinding
 
     private val dataBase : FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val myReference : DatabaseReference = dataBase.reference.child("UsersNotes")
+    private val reference : DatabaseReference = dataBase.reference.child("UsersNotes")
 
     private lateinit var notesAdapter : NotesAdapter
     private val notesList = ArrayList<UserNotes>()
@@ -43,9 +43,9 @@ class ListActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
 
-              val uniqueId =   notesAdapter.getUniqueId(viewHolder.adapterPosition)
-                    myReference.child(uniqueId).removeValue()
-                    Toast.makeText(applicationContext, "The Note got deleted!", Toast.LENGTH_SHORT).show()
+              val uniqueId = notesAdapter.getUniqueId(viewHolder.adapterPosition)
+                reference.child(uniqueId).removeValue()
+                Toast.makeText(applicationContext, "The Note got deleted!", Toast.LENGTH_SHORT).show()
                 finish()
             }
 
@@ -58,7 +58,7 @@ class ListActivity : AppCompatActivity() {
     // Delete notes
 
     private fun getDataFromFireBase() {
-        myReference.addValueEventListener(object : ValueEventListener {
+        reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 notesList.clear()
