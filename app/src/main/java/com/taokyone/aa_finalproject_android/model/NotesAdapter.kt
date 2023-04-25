@@ -2,6 +2,7 @@ package com.taokyone.aa_finalproject_android.model
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +21,6 @@ class NotesAdapter(
 
         val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NotesViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {

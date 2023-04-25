@@ -11,7 +11,6 @@ import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 import com.taokyone.aa_finalproject_android.view.*
 
-
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var logoutImg: ImageView

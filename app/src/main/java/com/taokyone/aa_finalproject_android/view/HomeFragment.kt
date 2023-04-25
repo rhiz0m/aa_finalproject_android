@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -21,9 +20,7 @@ import com.taokyone.aa_finalproject_android.databinding.FragmentHomeBinding
 import com.taokyone.aa_finalproject_android.model.Quotes
 import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
 import com.taokyone.aa_finalproject_android.viewModel.DateTimeViewModel
-import com.taokyone.aa_finalproject_android.viewModel.QuotesViewModel
 import io.github.florent37.shapeofview.shapes.BubbleView
-import io.github.florent37.shapeofview.shapes.CutCornerView
 import kotlinx.coroutines.launch
 import retrofit2.Callback
 import retrofit2.Response

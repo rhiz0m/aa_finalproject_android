@@ -34,7 +34,7 @@
             android:id="@+id/users_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Andreas"
+            android:text="earth dweller"
             android:layout_marginLeft="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_welcome"

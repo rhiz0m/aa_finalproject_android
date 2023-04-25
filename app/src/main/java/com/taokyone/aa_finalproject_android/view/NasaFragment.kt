@@ -14,7 +14,6 @@ import com.daimajia.androidanimations.library.YoYo
 import com.taokyone.aa_finalproject_android.databinding.FragmentNasaBinding
 import com.taokyone.aa_finalproject_android.model.Nasa
 import com.taokyone.aa_finalproject_android.model.apiData.NasaAPI
-import com.taokyone.aa_finalproject_android.viewModel.NasaViewModel
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -23,7 +22,6 @@ class NasaFragment : Fragment() {
 
     // ViewBinding
     private lateinit var nasaBinding: FragmentNasaBinding
-    private val nasaViewModel by viewModels<NasaViewModel>()
 
     // BaseURLs
     private val baseURLNasa = "https://api.nasa.gov/"

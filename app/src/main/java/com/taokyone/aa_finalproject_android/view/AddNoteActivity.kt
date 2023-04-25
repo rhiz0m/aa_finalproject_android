@@ -5,30 +5,26 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
+import androidx.core.content.ContextCompat
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityAddNoteBinding
-import com.taokyone.aa_finalproject_android.model.Nasa
 import com.taokyone.aa_finalproject_android.model.UserNotes
-import com.taokyone.aa_finalproject_android.model.apiData.NasaAPI
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.time.LocalDate
+
 
 class AddNoteActivity : AppCompatActivity() {
 
-    lateinit var addNotesBinding : ActivityAddNoteBinding
-    private val firebaseDb : FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val reference : DatabaseReference = firebaseDb.reference.child("UsersNotes")
+    lateinit var addNotesBinding: ActivityAddNoteBinding
+    private val firebaseDb: FirebaseDatabase = FirebaseDatabase.getInstance()
+    private val reference: DatabaseReference = firebaseDb.reference.child("UsersNotes")
 
-    private lateinit var showUsersNotesBtn : Button
+    private lateinit var showUsersNotesBtn: Button
     private val baseURLNasa = "https://api.nasa.gov/"
-    private lateinit var showDate : TextView
+    private lateinit var showDate: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +36,7 @@ class AddNoteActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Add Note"
 
-        showUsersNotesBtn = addNotesBinding.btnUpdate
+        showUsersNotesBtn = addNotesBinding.btnAdd
 
         showDate = addNotesBinding.tvDateAdd
 
@@ -48,34 +44,43 @@ class AddNoteActivity : AppCompatActivity() {
 
         showUsersNotesBtn.setOnClickListener() {
             // Form validation
-            /*
+
             val title: String = addNotesBinding.etTitle.text.toString().trim()
             val category: String = addNotesBinding.etCategory.text.toString().trim()
             val reflections = addNotesBinding.etReflections.text.toString().trim()
 
-            if(title.isEmpty()){
-                Toast.makeText(applicationContext, "Please enter a title", Toast.LENGTH_SHORT).show()
+            if (title.isEmpty()) {
+                addNotesBinding.etTitle.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etTitle)
+                Toast.makeText(applicationContext, "Please enter a title", Toast.LENGTH_SHORT)
+                    .show()
             } else if (category.isEmpty()) {
-                Toast.makeText(applicationContext, "Please type a category", Toast.LENGTH_SHORT).show()
+                addNotesBinding.etCategory.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etCategory)
+                Toast.makeText(applicationContext, "Please type a category", Toast.LENGTH_SHORT)
+                    .show()
             } else if (reflections.isEmpty()) {
-                Toast.makeText(applicationContext, "Please type a reflection", Toast.LENGTH_SHORT).show()
-            }
-            else { */
+                addNotesBinding.etReflections.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etReflections)
+                Toast.makeText(applicationContext, "Please type a reflection", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 addNoteEntity()
                 finish()
+            }
         }
     }
 
     private fun addNoteEntity() {
 
-        val date : String = LocalDate.now().toString()
-        val title : String = addNotesBinding.etTitle.text.toString()
+        val date: String = LocalDate.now().toString()
+        val title: String = addNotesBinding.etTitle.text.toString()
         val category: String = addNotesBinding.etCategory.text.toString()
-        val reflections : String = addNotesBinding.etReflections.text.toString()
+        val reflections: String = addNotesBinding.etReflections.text.toString()
 
 
         //Creating a unique key for each note
-        val uniqueId : String = reference.push().key.toString()
+        val uniqueId: String = reference.push().key.toString()
         //Notes-object to Firebase
         val notesObj = UserNotes(uniqueId, date, title, category, reflections)
 

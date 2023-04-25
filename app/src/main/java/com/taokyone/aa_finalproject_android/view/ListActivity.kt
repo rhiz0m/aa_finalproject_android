@@ -2,10 +2,14 @@ package com.taokyone.aa_finalproject_android.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchUIUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityListBinding
@@ -29,11 +33,17 @@ class ListActivity : AppCompatActivity() {
 
          listBinding = ActivityListBinding.inflate(layoutInflater)
         val view = listBinding.root
+
+
         setContentView(view)
+
+        listBinding.rvNotesList.setRecyclerListener() {
+
+        }
 
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
             override fun onMove(
-                recyclerView: RecyclerView,
+               recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {

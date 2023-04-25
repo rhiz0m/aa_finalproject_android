@@ -6,6 +6,7 @@ data class Nasa(
     val date: String = "",
     val copyright: String = "",
     val explanation: String = ""
-        ) {
+) {
 
 }
+

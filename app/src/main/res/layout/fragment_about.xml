@@ -1,53 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AboutFragment">
 
+
 <androidx.cardview.widget.CardView
+    android:layout_marginTop="8dp"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_gravity="center_horizontal"
     >
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightyellow">
+        android:background="@color/lightyellow"
+        android:padding="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_state"
-            android:layout_marginLeft="16dp"
+        <TextView
+            android:id="@+id/tv_about_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="State" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:fontFamily="@font/advent_pro_medium"
+            android:text="About"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_local_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:text="Local Time">
+        <TextView
+            android:id="@+id/tv_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:fontFamily="monospace"
+            android:text="This app is about daily inspiration. Scientific as well as philosophical. It uses a Nasa API as well as an Zen Quotes API. When inspired, be sure to write down some notes and save them to your personal list for later. Enjoy!"
+            android:textAlignment="textStart">
 
-    </TextView>
+        </TextView>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_local_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:text="Local Date" />
-</LinearLayout>
     </FrameLayout>
 
 </androidx.cardview.widget.CardView>

@@ -6,8 +6,6 @@ data class UserNotes(
     val title: String = "",
     val category: String = "",
     val reflections: String = "",
-
-
 ) {
 
 }
