@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.taokyone.aa_finalproject_android.view.HomeFragment"
+        android:name="com.taokyone.aa_finalproject_android.viewModel.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

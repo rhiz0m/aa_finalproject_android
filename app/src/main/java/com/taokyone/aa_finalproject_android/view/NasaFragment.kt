@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
+import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.FragmentNasaBinding
 import com.taokyone.aa_finalproject_android.model.Nasa
 import com.taokyone.aa_finalproject_android.model.apiData.NasaAPI
@@ -23,8 +26,10 @@ class NasaFragment : Fragment() {
     // ViewBinding
     private lateinit var nasaBinding: FragmentNasaBinding
 
+
     // BaseURLs
     private val baseURLNasa = "https://api.nasa.gov/"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +44,7 @@ class NasaFragment : Fragment() {
         // Id
         val nasaClickLayout = nasaBinding.layoutNasa
         val layoutClicker = nasaBinding.layoutNasa
+
 
 
         // Fetch API Method

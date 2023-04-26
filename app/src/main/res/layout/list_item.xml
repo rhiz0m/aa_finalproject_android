@@ -29,7 +29,7 @@
         android:elevation="4dp"
         app:shape_cutCorner_bottomLeftSize="8dp"
         app:shape_cutCorner_bottomRightSize="8dp"
-        app:shape_cutCorner_topRightSize="10dp">
+        app:shape_cutCorner_topRightSize="8dp">
         <FrameLayout
             android:id="@+id/fl_nasaFrame"
             android:layout_width="match_parent"
@@ -47,13 +47,13 @@
         </FrameLayout>
     </io.github.florent37.shapeofview.shapes.CutCornerView>
    <io.github.florent37.shapeofview.shapes.CutCornerView
-       android:layout_marginTop="4dp"
+       android:layout_marginTop="8dp"
+       android:layout_marginLeft="1dp"
        android:id="@+id/ccw_textsection_item"
        android:layout_width="245dp"
        android:layout_height="150dp"
-       app:shape_cutCorner_bottomRightSize="50dp"
-       app:shape_cutCorner_topLeftSize="16dp"
-       app:shape_cutCorner_bottomLeftSize="8dp">
+       app:shape_cutCorner_bottomRightSize="75dp">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:textColor="@color/lightyellow"
         android:layout_gravity="top"
         android:text="Date" />
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:textColor="@color/lightyellow"
         android:layout_gravity="bottom"
         android:text="category" />

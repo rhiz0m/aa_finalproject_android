@@ -25,18 +25,18 @@
         <activity
             android:name=".view.AddNoteActivity"
             android:exported="false"
-            android:parentActivityName=".viewModel.MainActivity"
+            android:parentActivityName=".view.MainActivity"
             />
         <activity
             android:name=".view.ListActivity"
             android:exported="false"
-            android:parentActivityName=".viewModel.MainActivity"/>
+            android:parentActivityName=".view.MainActivity"/>
         <activity
             android:name=".view.EditActivity"
             android:exported="false"
-            android:parentActivityName=".viewModel.MainActivity"/>
+            android:parentActivityName=".view.MainActivity"/>
         <activity
-            android:name=".viewModel.MainActivity"
+            android:name=".view.MainActivity"
             android:banner="@drawable/app_icon_your_company"
             android:exported="true">
             <intent-filter>

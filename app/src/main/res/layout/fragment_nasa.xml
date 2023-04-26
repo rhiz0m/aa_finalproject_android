@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
+            android:animateLayoutChanges="false"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +55,9 @@
                     android:id="@+id/fl_nasaFrame"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="top"
                     android:background="@color/black"
-                    android:padding="4dp"
-                    android:layout_gravity="top">
+                    android:padding="4dp">
 
                     <ImageView
                         android:id="@+id/iv_nasaIMG"
@@ -65,8 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/solareclipse"
-                        android:scaleType="centerCrop"
-                        />
+                        android:scaleType="centerCrop" />
 
                 </FrameLayout>
 
@@ -142,10 +141,10 @@
                         android:id="@+id/tv_explanation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/advent_pro"
-                        android:paddingTop="4dp"
-                        android:paddingHorizontal="16dp"
                         android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/advent_pro"
+                        android:paddingHorizontal="16dp"
+                        android:paddingTop="4dp"
                         android:text="Along a narrow path that mostly avoided landfall, the shadow of the New Moon raced across planet Earth's southern hemisphere on April 20 to create a rare annular-total or hybrid solar eclipse. A mere 62 seconds of totality could be seen though, when the dark central lunar shadow just grazed the North West Cape, a peninsula in western Australia. From top to bottom these panels capture the beginning, middle, and end of that fleeting total eclipse phase. At start and finish, solar prominences and beads of sunlight stream past the lunar limb. At mid-eclipse the central frame reveals the sight only easily visible during totality and most treasured by eclipse chasers, the magnificent corona of the active Sun. Of course eclipses tend to come in pairs. On May 5, the next Full Moon will just miss the dark inner part of Earth's shadow in a penumbral lunar eclipse."
                         android:textColor="#5B6161"
                         android:textSize="14sp"
@@ -159,4 +158,5 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.taokyone.aa_finalproject_android.view
+package com.taokyone.aa_finalproject_android.viewModel
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,19 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.Navigation
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.FragmentHomeBinding
 import com.taokyone.aa_finalproject_android.model.Quotes
 import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
-import com.taokyone.aa_finalproject_android.viewModel.DateTimeViewModel
 import io.github.florent37.shapeofview.shapes.BubbleView
 import kotlinx.coroutines.launch
 import retrofit2.Callback
@@ -37,6 +40,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var quotesClickable: BubbleView
     private lateinit var floatingBtn : FloatingActionButton
+
     var quotesList = ArrayList<Quotes>()
 
     override fun onCreateView(
@@ -52,7 +56,6 @@ class HomeFragment : Fragment() {
         floatingBtn = homeBinding.floatingActionButton
         quotesClickable = homeBinding.ccwQuotes
         quotesClickable.isVisible = false
-
 
         floatingBtn.setOnClickListener() {
             quotesClickable.isVisible = ! quotesClickable.isVisible
@@ -84,6 +87,8 @@ class HomeFragment : Fragment() {
         }
 
         // Click listeners
+
+
         quotesClickable.setOnClickListener {
             getWisdomQuotes()
         }

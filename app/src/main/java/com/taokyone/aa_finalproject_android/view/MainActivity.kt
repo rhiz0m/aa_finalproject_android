@@ -1,4 +1,4 @@
-package com.taokyone.aa_finalproject_android.viewModel
+package com.taokyone.aa_finalproject_android.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
-import com.taokyone.aa_finalproject_android.view.*
+import com.taokyone.aa_finalproject_android.viewModel.HomeFragment
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     // ViewBinding
     private lateinit var viewBinding: ActivityMainBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +30,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         logoutImg = viewBinding.btnLogout
 
         logoutImg.setOnClickListener() {
-            var intentAddNote = Intent(this, AddNoteActivity::class.java)
-            startActivity(intentAddNote)
+            supportFragmentManager.commit {
+                replace(R.id.fragmentContainerView, AboutFragment())
+            }
         }
 
         // OnItemListener for the Bottom Navigation
