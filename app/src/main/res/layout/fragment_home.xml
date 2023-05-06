@@ -8,7 +8,7 @@
     android:animateLayoutChanges="false"
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
-    tools:context=".viewModel.HomeFragment">
+    tools:context=".view.HomeFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Clock"
-                android:textColor="@color/lightBlue"
+                android:textColor="@color/custom_teal_200"
 
                 />
         </FrameLayout>
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/lightBlue"
+            android:background="@drawable/gradient_bottom_bar"
             android:orientation="vertical">
 
             <TextView
@@ -116,7 +116,7 @@
                 android:padding="8dp"
                 android:paddingLeft="16dp"
                 android:text="Friedrich Nietzsche"
-                android:textColor="#000"
+                android:textColor="@color/custom_antiteal_200"
                 android:textSize="16sp" />
         </LinearLayout>
     </io.github.florent37.shapeofview.shapes.BubbleView>
@@ -130,6 +130,7 @@
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:src="@drawable/speaking"
-        app:backgroundTint="@color/teal_200" />
+        app:rippleColor="@color/custom_teal_200"
+        app:backgroundTint="@color/black" />
 
 </FrameLayout>

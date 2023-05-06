@@ -45,17 +45,17 @@ class EditActivity : AppCompatActivity() {
             val reflections = editBinding.etReflections.text.toString().trim()
 
             if (title.isEmpty()) {
-                editBinding.etTitle.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                editBinding.etTitle.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(editBinding.etTitle)
                 Toast.makeText(applicationContext, "Please enter a title", Toast.LENGTH_SHORT)
                     .show()
             } else if (category.isEmpty()) {
-                editBinding.etCategory.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                editBinding.etCategory.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(editBinding.etCategory)
                 Toast.makeText(applicationContext, "Please type a category", Toast.LENGTH_SHORT)
                     .show()
             } else if (reflections.isEmpty()) {
-                editBinding.etReflections.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                editBinding.etReflections.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(editBinding.etReflections)
                 Toast.makeText(applicationContext, "Please type a reflection", Toast.LENGTH_SHORT)
                     .show()

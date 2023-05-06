@@ -9,7 +9,6 @@ import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
-import com.taokyone.aa_finalproject_android.viewModel.HomeFragment
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 

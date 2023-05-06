@@ -50,17 +50,17 @@ class AddNoteActivity : AppCompatActivity() {
             val reflections = addNotesBinding.etReflections.text.toString().trim()
 
             if (title.isEmpty()) {
-                addNotesBinding.etTitle.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                addNotesBinding.etTitle.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etTitle)
                 Toast.makeText(applicationContext, "Please enter a title", Toast.LENGTH_SHORT)
                     .show()
             } else if (category.isEmpty()) {
-                addNotesBinding.etCategory.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                addNotesBinding.etCategory.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etCategory)
                 Toast.makeText(applicationContext, "Please type a category", Toast.LENGTH_SHORT)
                     .show()
             } else if (reflections.isEmpty()) {
-                addNotesBinding.etReflections.background = ContextCompat.getDrawable(applicationContext, R.color.lightBlue)
+                addNotesBinding.etReflections.background = ContextCompat.getDrawable(applicationContext, R.color.custom_teal_200)
                 YoYo.with(Techniques.Flash).repeat(0).playOn(addNotesBinding.etReflections)
                 Toast.makeText(applicationContext, "Please type a reflection", Toast.LENGTH_SHORT)
                     .show()
@@ -78,13 +78,13 @@ class AddNoteActivity : AppCompatActivity() {
         val category: String = addNotesBinding.etCategory.text.toString()
         val reflections: String = addNotesBinding.etReflections.text.toString()
 
-
+        //Document ist Entity
         //Creating a unique key for each note
         val uniqueId: String = reference.push().key.toString()
         //Notes-object to Firebase
         val notesObj = UserNotes(uniqueId, date, title, category, reflections)
 
-        reference.child(uniqueId).setValue(notesObj).addOnCompleteListener() { task ->
+        reference.child("Note: $uniqueId").setValue(notesObj).addOnCompleteListener() { task ->
 
             if (task.isSuccessful) {
                 Toast.makeText(this, "The Notes got added to Firebase!", Toast.LENGTH_SHORT).show()

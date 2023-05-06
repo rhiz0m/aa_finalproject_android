@@ -8,7 +8,7 @@
     tools:context=".view.AboutFragment">
 
     <io.github.florent37.shapeofview.shapes.BubbleView
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="16dp"
         android:id="@+id/ccw_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:id="@+id/fl_textFrame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/lightBlue"
+            android:background="@drawable/gradient_bottom_bar"
             android:orientation="vertical">
 
             <TextView
@@ -48,7 +48,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="About"
-                android:textColor="@color/white"
+                android:textColor="@color/custom_antiteal_200"
                 android:textSize="14sp" />
 
             <TextView
@@ -56,14 +56,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-          android:layout_marginHorizontal="4dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/advent_pro_medium"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="monospace"
                 android:padding="8dp"
                 android:paddingLeft="16dp"
-                android:text="This app is about daily inspiration. Scientific as well as philosophical. It uses a Nasa API as well as an Zen Quotes API. When inspired, be sure to write down some notes and save them to your personal list for later. Carpe Diem Folks!"
-                android:textColor="#000"
-                android:textSize="16sp" />
+                android:text="This app is about daily inspiration. Scientific as well as philosophical. It uses a Nasa API as well as an Zen Quotes API. When inspired, be sure to write down some notes and save them to your personal list for later. Allbest Folks!"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </LinearLayout>
     </io.github.florent37.shapeofview.shapes.BubbleView>
 
@@ -86,6 +86,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
+        app:rippleColor="@color/custom_teal_200"
+        app:backgroundTint="@color/black"
         android:src="@drawable/speaking" />
 
 </FrameLayout>

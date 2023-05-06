@@ -1,4 +1,4 @@
-package com.taokyone.aa_finalproject_android.viewModel
+package com.taokyone.aa_finalproject_android.view
 
 import android.os.Bundle
 import android.os.Handler
@@ -7,22 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.Navigation
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.FragmentHomeBinding
 import com.taokyone.aa_finalproject_android.model.Quotes
 import com.taokyone.aa_finalproject_android.model.apiData.QuotesAPI
+import com.taokyone.aa_finalproject_android.viewModel.DateTimeViewModel
 import io.github.florent37.shapeofview.shapes.BubbleView
 import kotlinx.coroutines.launch
 import retrofit2.Callback
@@ -81,14 +78,11 @@ class HomeFragment : Fragment() {
                 dateTimeViewModel.uiState.collect() {
                     //Update UI elements
                     homeBinding.tvClock.text = "Time: " + dateTimeViewModel.uiState.value.time.toString()
-                    //homeBinding.tvLocalDate.text = "Date:" + dateTimeViewModel.uiState.value.date.toString()
                 }
             }
         }
 
         // Click listeners
-
-
         quotesClickable.setOnClickListener {
             getWisdomQuotes()
         }
@@ -104,7 +98,6 @@ class HomeFragment : Fragment() {
             .build()
 
         val quotesAPI: QuotesAPI = retroFit.create(QuotesAPI::class.java)
-
         val call: retrofit2.Call<List<Quotes>> = quotesAPI.getWisdomQuote()
 
         // Callback function
