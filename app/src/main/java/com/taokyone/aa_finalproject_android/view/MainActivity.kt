@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.ImageView
 import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
+import com.taokyone.aa_finalproject_android.LoginActivity
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 
@@ -29,9 +30,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         logoutImg = viewBinding.btnLogout
 
         logoutImg.setOnClickListener() {
-            supportFragmentManager.commit {
-                replace(R.id.fragmentContainerView, AboutFragment())
-            }
+            var intentRecycler = Intent(this, LoginActivity::class.java)
+            startActivity(intentRecycler)
+
         }
 
         // OnItemListener for the Bottom Navigation

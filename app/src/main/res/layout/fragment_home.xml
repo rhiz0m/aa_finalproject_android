@@ -116,7 +116,7 @@
                 android:padding="8dp"
                 android:paddingLeft="16dp"
                 android:text="Friedrich Nietzsche"
-                android:textColor="@color/custom_antiteal_200"
+                android:textColor="@color/custom_pink_200"
                 android:textSize="16sp" />
         </LinearLayout>
     </io.github.florent37.shapeofview.shapes.BubbleView>

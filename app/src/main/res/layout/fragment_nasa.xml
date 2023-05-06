@@ -94,7 +94,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/lightpurple">
+                    android:background="@color/lightgray">
 
                     <TextView
                         android:id="@+id/tv_title_nasa"

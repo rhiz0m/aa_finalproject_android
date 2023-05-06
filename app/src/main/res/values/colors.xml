@@ -16,10 +16,11 @@
     <color name="selected_background">#ffaa3f</color>
     <color name="default_background">#3d3d3d</color>
 
-    <color name="lightpurple">#D9F1F1</color>
+    <color name="lightgray">#E5E1E1</color>
     <color name="custom_dark">#1E1F23</color>
     <color name="custom_dark_transparant">#801E1F23</color>
     <color name="custom_teal_200">#43D9CA</color>
-    <color name="custom_antiteal_200">#D08DE7</color>
+    <color name="custom_antiteal_200">#F6FFFE</color>
+    <color name="custom_pink_200">#ED9DEE</color>
 
 </resources>

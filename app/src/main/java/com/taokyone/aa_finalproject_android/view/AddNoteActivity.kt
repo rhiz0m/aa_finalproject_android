@@ -84,7 +84,7 @@ class AddNoteActivity : AppCompatActivity() {
         //Notes-object to Firebase
         val notesObj = UserNotes(uniqueId, date, title, category, reflections)
 
-        reference.child("Note: $uniqueId").setValue(notesObj).addOnCompleteListener() { task ->
+        reference.child(uniqueId).setValue(notesObj).addOnCompleteListener() { task ->
 
             if (task.isSuccessful) {
                 Toast.makeText(this, "The Notes got added to Firebase!", Toast.LENGTH_SHORT).show()

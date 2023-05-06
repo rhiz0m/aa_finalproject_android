@@ -34,4 +34,9 @@
         android:name="com.taokyone.aa_finalproject_android.view.NasaFragment"
         android:label="fragment_nasa"
         tools:layout="@layout/fragment_nasa" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.taokyone.aa_finalproject_android.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>
