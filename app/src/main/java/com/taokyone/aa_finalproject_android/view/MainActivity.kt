@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.widget.ImageView
 import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
-import com.taokyone.aa_finalproject_android.LoginActivity
 import com.taokyone.aa_finalproject_android.R
 import com.taokyone.aa_finalproject_android.databinding.ActivityMainBinding
 
