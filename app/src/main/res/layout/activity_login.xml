@@ -82,7 +82,7 @@
                 android:orientation="vertical">
             <!-- YOUR CONTENT -->
             <EditText
-                android:id="@+id/overlay_view"
+                android:id="@+id/et_login_usermail"
                 android:paddingTop="2dp"
                 android:paddingLeft="8dp"
                 android:layout_width="330dp"
