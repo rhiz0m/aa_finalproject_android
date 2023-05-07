@@ -6,58 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".view.LoginActivity">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/top_navBar_login"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@drawable/gradient_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/creators_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Created by: Andreas Antonsson. 2023-05"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_welcome"
-            android:textSize="12dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/custom_teal_200"
-            />
-
-        <TextView
-            android:id="@+id/tv_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:hint="Stockholms Tekniska Institut"
-            android:textAlignment="center"
-            android:textColorHint="@color/white"
-            android:textSize="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creators_name" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/mary_shelley"
         android:layout_width="470dp"
-        android:layout_height="578dp"
+        android:layout_height="596dp"
         android:background="@drawable/bgspacewomansm"
         android:scaleType="centerInside"
-        android:src="@drawable/gradient_background"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/gradient_login"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_navBar_login"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -92,7 +53,7 @@
                 android:layout_marginLeft="32dp"
                 android:backgroundTint="#FFFADC"
                 android:ems="10"
-                android:hint="Username"
+                android:hint="Email"
                 android:inputType="textPersonName"
                 android:textColor="#FFFADC"
                 android:textColorHint="#FFFADC"
